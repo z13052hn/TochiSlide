@@ -8,7 +8,7 @@
       #map { height: 100% }
     </style>
 
-    <script src="http://maps.google.com/maps/api/js?v=3&sensor=false&key=<%=@GOOGLEMAP_KEY%>"
+    <script src="http://maps.google.com/maps/api/js?v=3&sensor=false&key=<%=@GOOGLEMAP_KEYi1%>"
         type="text/javascript" charset="UTF-8"></script>
 
     <script type="text/javascript">
@@ -21,7 +21,7 @@
 
       // Google Mapで利用する初期設定用の変数
  
-     var latlng = new google.maps.LatLng(<%= @result["coord"]["lat"]%>,<%= @result["coord"]["lon"]%>);
+     var latlng = new google.maps.LatLng(4.477856485570586, 114.63134765625);
 
 
       var opts = {
@@ -51,7 +51,7 @@
     <center>
     <h1>Welcome to TochiSlide Hotline</h1>
     <div id="map" style="height:500px; width:500px"></div>
-    <h2 font-size="20">Time:<%= @time %>(<%=@timeZoneId%>)</h2>
+    <h2 font-size="20">time:<%= @time %></h2>
     <table border="1" cellspacing="0">
     <tr><th>LAT</th><td id="show_lat"></td></tr>
     <tr><th>LNG</th><td id="show_lng"></td></tr>
@@ -60,6 +60,7 @@
     <tr><th>country</th><td><%= @result["sys"]["country"]%></td></tr>
     <tr><th>city</th><td><%= @result["name"]%></td></tr>
     <tr><th>weather</th><td><%= @result["weather"][0]["main"]%></td></tr>
+    </table>
     </center>
   </body>
 
