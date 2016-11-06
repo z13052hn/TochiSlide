@@ -7,10 +7,11 @@ class TochiSlideController < ApplicationController
 	lat = "4.72"
 	lon = "115.07"
 	if request.get? then
-		if params['lat'] != nil then
+		if params['lat'] != nil and params['lon'] then
 			lat = params['lat']
-			lon = params['lng']
+			lon = params['lon']
 		end
+		@comment = params['comment']
 	end
 	@GOOGLEMAP_KEY = ENV["GOOGLEMAP_KEY"]
 	

@@ -37,9 +37,11 @@
     }
 
     function mylistener(event) {
-      document.getElementById("show_lat").innerHTML = event.latLng.lat();
-      document.getElementById("show_lng").innerHTML = event.latLng.lng();
-      location.href = "index?lat=" + event.latLng.lat() + "&lng=" + event.latLng.lng();
+      //document.getElementById("show_lat").innerHTML = event.latLng.lat();
+      
+      document.info.lat.value = event.latLng.lat();
+      //document.getElementById("show_lng").innerHTML = event.latLng.lng();
+      location.href = "index?lat=" + event.latLng.lat() + "&lng=" + event.latLng.lng() + "&comment=" + document.info.comment.value;
     }
 
     //]]>
@@ -52,15 +54,51 @@
     <h1>Welcome to TochiSlide Hotline</h1>
     <div id="map" style="height:500px; width:500px"></div>
     <h2 font-size="20">Time:<%= @time %>(<%=@timeZoneId%>)</h2>
+
+    <form method="get" action="index" name="info">
     <table border="1" cellspacing="0">
-    <tr><th>LAT</th><td id="show_lat"></td></tr>
-    <tr><th>LNG</th><td id="show_lng"></td></tr>
-    <tr><th>LAT</th><td><%= @result["coord"]["lat"]%></td></tr>
-    <tr><th>LNG</th><td><%= @result["coord"]["lon"]%></td></tr>
-    <tr><th>country</th><td><%= @result["sys"]["country"]%></td></tr>
-    <tr><th>city</th><td><%= @result["name"]%></td></tr>
-    <tr><th>weather</th><td><%= @result["weather"][0]["main"]%></td></tr>
+    	<tr>
+                <th>Item</th>
+                <th>Value</>
+        </tr>
+
+	<tr>
+		<th>Lat</th>
+		<td><input type="text" name="lat" value="<%= @result["coord"]["lat"]%>" readonly ></td>
+	</tr>
+    	<tr>
+		<th>Lng</th>
+		<td><input type="text" name="lon" value="<%= @result["coord"]["lon"]%>" readonly></td>
+	</tr>
+    	<tr>
+		<th>Country</th>
+		<td><input type="text" name="country" value="<%= @result["sys"]["country"]%>" readonly></td>
+	</tr>
+    	<tr>
+		<th>City</th>
+		<td><input type="text" name="city" value="<%= @result["name"]%>" readonly></td>
+	</tr>
+    	<tr>
+		<th>Weather</th>
+		<td><input type="text" name="weather" value="<%= @result["weather"][0]["main"]%>" readonly></td>
+	</tr>
+	<tr>
+                <th>Temperature</th>
+                <td><input type="text" name="temp" value="<%= @result["main"]["temp"]%>" readonly></td>
+        </tr>
+	<tr>
+                <th>Humidity</th>
+                <td><input type="text" name="humidity" value="<%= @result["main"]["humidity"]%>" readonly></td>
+        </tr>
+    	<tr>
+                <th>Comment</th>
+                <td><input type="text" style="background-color:#ffd700;" name="comment" value="<%=@comment%>"></td>
+        </tr>
+    </table>
+　　　　　
+    <input type="submit" value="submit">
     </center>
+    </form>
   </body>
 
 </html>
