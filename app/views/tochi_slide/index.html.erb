@@ -37,11 +37,7 @@
     }
 
     function mylistener(event) {
-      //document.getElementById("show_lat").innerHTML = event.latLng.lat();
-      
-      document.info.lat.value = event.latLng.lat();
-      //document.getElementById("show_lng").innerHTML = event.latLng.lng();
-      location.href = "index?lat=" + event.latLng.lat() + "&lng=" + event.latLng.lng() + "&comment=" + document.info.comment.value;
+      location.href = "index?lat=" + event.latLng.lat() + "&lon=" + event.latLng.lng() + "&comment=" + document.info.comment.value;
     }
 
     //]]>

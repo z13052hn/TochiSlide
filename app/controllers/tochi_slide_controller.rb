@@ -22,7 +22,7 @@ class TochiSlideController < ApplicationController
 
 	googleMapUri = "https://maps.googleapis.com/maps/api/timezone/json"
 	timestamp = Time.now.to_i
-	uri2 = URI.parse(googleMapUri +"?location=" + lat +"," + lon + "&timestamp=" + timestamp.to_s + "&key=" + ENV["GOOGLEMAP_KEY"])
+	uri2 = URI.parse(googleMapUri +"?location=" + lat +"," + lon + "&timestamp=" + timestamp.to_s + "&key=" + ENV["GOOGLEMAP_TIMEZONE_KEY"])
 	json2 = Net::HTTP.get(uri2)
 	timeJson = JSON.parse(json2)
 	@time = (Time.now + timeJson['rawOffset']).strftime("%d/%m/%Y %H:%M:%S")
